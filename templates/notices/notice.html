@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
 </head>
 
-<body id="notice-page">
+<body class="notice-page">
     {% include 'base.html' %}
     <div class="notice">
         <div class="notice__title">공지사항</div>
         {% for notices in notice.object_list %}
 
-        <div class="notice__card">
+        <a href="{% url 'notice:detail' notices.pk %}" class="notice__card">
             <div class="notice__img">
                 <img src="{{notices.get_photo_url}}" />
             </div>
-            <a href="{% url 'notice:detail' notices.pk %}" class="notice__text">
+            <div class="notice__text">
                 <div class="notice__card-title">
                     {{notices.title| truncatechars:20}}
                 </div>
@@ -49,10 +49,9 @@
                         <button>수정</button>
                     </div>
                 </a>
-            </a>
                 {% endif %}
-            </a>
-        </div>
+            </div>
+        </a>
         {% endfor %}
         <div class="btn-component goto-create__btn">
             <a href="{% url 'notice:create' %}">공지 작성</a>
