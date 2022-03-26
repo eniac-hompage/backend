@@ -1,28 +1,35 @@
-.btn-component button {
+.btn-component a {
   cursor: pointer;
   width: 100px;
-  height: 40px;
-  background-color: #2ecc71;
+  height: 45px;
+  background-color: #fd9696;
+  color: black;
   border-radius: 5px;
   border: none;
   border: 2px solid rgba(0, 0, 0, 0.2);
   transition: all 0.15s ease-in-out;
   margin-left: 10px;
+  font-size: 15px;
+  text-align: center;
+  line-height: 45px;
 }
-.btn-component button:hover {
-  background-color: #22a558;
+.btn-component a:hover {
+  background-color: #f07e7e;
 }
 
-.edit-button button {
+.edit-button a {
   width: 70px;
   height: 35px;
   cursor: pointer;
+  font-size: 15px;
+  text-align: center;
+  line-height: 35px;
   background-color: #ffae00;
   border-radius: 5px;
   border: none;
   border: 2px solid rgba(0, 0, 0, 0.2);
   transition: all 0.15s ease-in-out;
 }
-.edit-button button:hover {
+.edit-button a:hover {
   background-color: #e48b17;
 }
