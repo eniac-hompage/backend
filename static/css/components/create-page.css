@@ -57,6 +57,34 @@ a {
 
 .create-wrap {
     margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-wrap_sec {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-wrap_second input {
+    width: 80%;
+}
+
+.create-wrap input:first-child {
+    width: 80%;
+}
+
+.create-wrap textarea {
+    width: 80%;
+}
+
+.create-wrap_sec textarea {
+    width: 80%;
+}
+
+.create-wrap select {
+    width: 80%;
 }
 
 #create__text {

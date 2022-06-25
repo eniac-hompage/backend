@@ -93,6 +93,9 @@ class UserProfileView(DetailView):
     model = models.User
     context_object_name = "user_obj"
 
+
+
+
 def email_verify(request):
 
     return render(request, "users/email_verify.html")
@@ -104,7 +107,7 @@ class UpdateProfileView(UpdateView):
     model = models.User
     template_name = "users/update_profie.html"
     fields = (
-        "username", "major", "student_id", "phone_number", "entered_eniac", "email", "password"
+        "username", "major", "student_id", "phone_number", "entered_eniac", "email"
     )
     
 

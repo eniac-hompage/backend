@@ -27,19 +27,21 @@ class User(AbstractUser):
       (GENRE_GAME, "GAME"),
       (GENRE_OTHER, "OTHER")
     )
-    username = models.CharField(max_length=20, blank=True, null=True)
-    major = models.CharField(max_length=20, blank=True, null=True)
-    git_url = models.URLField(max_length=200, null=True, blank=True)
-    eniac_code = models.CharField(max_length=20, null=True, blank=True)
-    entered_eniac = models.SmallIntegerField(default=32, max_length=10)
-    fav_pro_genre = models.CharField(max_length=20, blank=True, null=True)
-    blog_url = models.URLField(default=32, max_length=200)
+    username = models.CharField(max_length=20, blank=True, null=True, verbose_name='유저이름')
+    major = models.CharField(max_length=20, blank=True, null=True, verbose_name='전공')
+    git_url = models.URLField(max_length=200, null=True, blank=True, verbose_name='깃허브주소')
+    eniac_code = models.CharField(max_length=20, null=True, blank=True, verbose_name='')
+    entered_eniac = models.SmallIntegerField(default=32, max_length=10, verbose_name='에니악기수')
+    fav_pro_genre = models.CharField(max_length=20, blank=True, null=True, verbose_name='선호장르')
+    blog_url = models.URLField(default=32, max_length=200, verbose_name='블로그주소')
 
-    student_id = models.IntegerField( max_length=20, blank=True, null=True)
-    phone_number = models.CharField(max_length=40, blank=True, null=True)
+    student_id = models.IntegerField( max_length=20, blank=True, null=True, verbose_name='학번')
+    phone_number = models.CharField(max_length=40, blank=True, null=True, verbose_name='전화번호')
     
-    email_confirmed = models.BooleanField(default=False)
-    email_secret = models.CharField(max_length=120, default="", blank=True)
+    email_confirmed = models.BooleanField(default=False, verbose_name='이메일인증')
+    email_secret = models.CharField(max_length=120, default="", blank=True, verbose_name='유저이름')
+
+    email = models.CharField(max_length=80, default="", blank=True, verbose_name='이메일')
 
 
     def get_absolute_url(self):

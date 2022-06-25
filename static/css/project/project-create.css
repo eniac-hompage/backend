@@ -17,8 +17,17 @@
     font-size: 40px;
     margin-right: 50px;
 }
- 
-.project-field {}
+
+.project-field .input {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.project form {
+    display: flex;
+    justify-content: center;
+}
 
 .project-create__field {
     margin-top: 30px;
@@ -26,11 +35,22 @@
 }
 
 .project-create__field input {
-    background: #ffffff;    
+    background: #ffffff;
     box-sizing: border-box;
     border-radius: 4px;
     height: 51px;
     width: 50%;
+}
+
+.project-field input {
+    background-color: var(--search-box-bg, white);
+    border-radius: 30px;
+    color: var(--search-box-text);
+    font-family: inherit;
+    font-size: inherit;
+    height: 100%;
+    outline: none;
+    width: 80%;
 }
 
 .project-create__content {
@@ -41,6 +61,12 @@
 
 .project-create__section {
     display: flex;
+}
+
+.project-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .project-create__button {

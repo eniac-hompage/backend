@@ -16,7 +16,44 @@
     margin-bottom: 200px;
 }
 
+.profile_update {
+    width: 800px;
+    height: 620px;
+    margin: auto;
+    background-color: white;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 200px;
+}
+
+.profile>form {
+    margin: 0 200px;
+}
+
+.profile_update>form {
+    margin: 0 200px;
+}
+
+.profile>button {
+    margin-top: 30px;
+}
+
 .profile>img {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-70px);
+    width: 140px;
+    height: 140px;
+    border: 4px solid rgba(0, 0, 0, 0.4);
+    background-color: #e6ecff;
+    border-radius: 50%;
+}
+
+.profile_update>img {
     position: absolute;
     top: 130px;
     left: 50%;
@@ -100,6 +137,16 @@
         height: 800px;
     }
     .profile>img {
+        width: 120px;
+        height: 120px;
+        top: 140px;
+        transform: translateX(-60px);
+    }
+    .profile_update {
+        width: 400px;
+        height: 800px;
+    }
+    .profile_update>img {
         width: 120px;
         height: 120px;
         top: 140px;

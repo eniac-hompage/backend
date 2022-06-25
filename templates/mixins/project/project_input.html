@@ -1,3 +1,3 @@
-<div class="create-wrap {% if field.errors %}has_error{% endif %}">
+<div class="create-wrap_sec {% if field.errors %}has_error{% endif %}">
     <label for="create__cont-title">{{field.label}}</label> {{field}} {% if field.errors %} {% for error in field.errors %} <span>{{error}}</span> {% endfor %} {% endif %}
 </div>
