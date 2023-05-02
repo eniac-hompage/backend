@@ -26,18 +26,9 @@
                         <div class="activity-main">
                             <section class="activity__cont-wrap">
                                 <div class="dropdown">
-                                    <form method="get">
-                                        <label for="featured">Format</label>
-                                        <select name="featured">
-        {% for adoption in typeList %} 
-            <option value="{{ adoption }}">{{ adoption }}</option>
-        {% endfor %}
-     </select>
-                                        <input type="submit" value="Filter" />
-                                    </form>
-                                    <!-- <button type="button" class="dropdown-toggle">
-                                  학기
-                                </button> -->
+                                    <!-- <button type="button" class="dropdownstoggle">
+                                        학기
+                                        </button> -->
                                     <!-- <ul class="dropdown-menu">
                                         <li class="dropdown-item">
                                             <button type="button" value="1" class="dropdown-option" onclick="GetSelectedValue()">
@@ -61,6 +52,7 @@
                 {% for semester in sem %}
                     <option value="{{room_type.pk}}">{{semester}}</option>
                 {% endfor %}
+                                            <!-- semester sem안에서 semeseter를 내보낼경우 나는 다르게 배출하겠다 -->
             </select>
                                     </div>
                                 </div> {% for activity in act.object_list %}
@@ -78,13 +70,12 @@
                                             {{activity.user}}
                                         </p>
                                         <div>
-
                                             <form class="activity__comment" method="POST">
                                                 {% csrf_token %} {% for field in comment_form %}{{field}}{% endfor %}
                                                 <input class="activity__submit" type="submit">
                                             </form>
                                         </div>
-                                        <!-- 글 작성자만 수정버튼 보이도록 -->
+
                                         <div>
                                             {% if activity.user == user %}
                                             <a href="{% url 'activity:edit' activity.pk %} ">
@@ -98,6 +89,7 @@
                                                 </div>
                                             </a>
                                             {% endif %}
+
                                         </div>
                                     </a>
                                 </section>
@@ -106,6 +98,7 @@
                                     <a href="{% url 'activity:createAct' %} "><button>활동 작성</button></a>
                                 </div>
                                 <!-- 페이지 -->
+
                                 <form method="get" action="{% url 'activity:search' %}">
                                     <input name="city" placeholder="Search by City" />
                                 </form>
@@ -123,11 +116,13 @@
                                         {% endif %}
                                     </div>
                                 </div>
+
                             </section>
                     </main>
                     {% include 'partials/footer.html' %}
                     </div>
             </li>
+
             <li class="tab-menu__list ">
                 <a href="#tab2 " class="tab-menu__btn ">명단</a>
                 <div id="tab2 " id="attendence " class="tab-menu__cont ">
@@ -188,7 +183,8 @@
                     {% include 'partials/footer.html' %}
                 </div>
 
-            </li>
+            </li>ㅊ
+
             <li class="tab-menu__list ">
                 <a href="#tab3 " class="tab-menu__btn ">챌린지</a>
                 <div id="tab3 " id="challge " class="tab-menu__cont challenge ">
@@ -199,10 +195,11 @@
                                 <div class="challenge__title ">{{challenge.users}}</div>
 
                                 <p class="challenge__desc ">
-                                    {{challenge.desc}}
+                                    {{challenge.desc}} wann
                                 </p>
                                 <p class="challenge__date ">
                                     {{challenge.created}}
+
                                 </p>
 
                             </div>
@@ -231,3 +228,6 @@
     </div>
 
 </html>
+<!-- you are follower 
+so what can i do?
+ -->

@@ -14,24 +14,24 @@ class Project(TimeStampedModel):
     img_a = models.ImageField(verbose_name='이미지1', null=True, blank=True)
     img_b = models.ImageField(verbose_name='이미지2', null=True, blank=True)
     img_c = models.ImageField(verbose_name='이미지3', null=True, blank=True)
-
+    # 필드같은 경우는 
 
     tag = models.CharField(max_length=40, verbose_name='태그')
     git =  models.CharField(max_length=60, verbose_name='깃허브 주소')
-    views = models.PositiveIntegerField(default=0, verbose_name='조회수')
+    views = models.PositiveIntegerField(default=0, verbose_name='조회수')   
     user = models.ForeignKey(
-        "users.User", on_delete=models.CASCADE, related_name="project",  null=True, blank=False
+        "users.User", on_delete=models.CASCADE, related_name="ㄴ",  null=True, blank=False
     ) 
 
     developer = models.CharField(max_length=200, verbose_name='개발자')
 
     class Meta:
-        ordering = ["-created"]
+        ordering = ["-created"] 
         
     @property
     def get_photo_url(self): 
       if self.thumnail_img:
-          return self.thumnail_img.url
+          return self.thumnail_img.url 
       else:
           return "/static/images/user.jpg"
 
@@ -43,12 +43,12 @@ class Project(TimeStampedModel):
     def get_photo_url_a(self):
       if self.img_a:
           return self.img_a.url
-      else:
+      else:     
           return None
 
     @property
     def get_photo_url_b(self):
-      if self.img_b:
+      if self.img_b:    
           return self.img_b.url
       else:
           return None
@@ -59,4 +59,5 @@ class Project(TimeStampedModel):
           return self.img_c.url
       else:
           return None 
+
 

@@ -1,3 +1,4 @@
+from re import L
 from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -13,7 +14,6 @@ class Activity(TimeStampedModel):
     SEMI_B = "2학기"
 
 
-    
     SEMI_CHOICES = (
       (SEMI_A, "22년도 1학기"),
       (SEMI_B, "22년도 2학기"),
@@ -22,6 +22,7 @@ class Activity(TimeStampedModel):
     title = models.CharField(max_length=100, default = '', null=True, blank=False, verbose_name='제목')
     semester = models.CharField(choices=SEMI_CHOICES, default = '', max_length=10, blank=False, null=True, verbose_name='학기')
     thumnail_img = models.ImageField(default = '', verbose_name='썸네일이미지')
+    
     img_a = models.ImageField(verbose_name='이미지1', null=True, blank=True)
     img_b = models.ImageField(verbose_name='이미지2', null=True, blank=True)
     img_c = models.ImageField(verbose_name='이미지3', null=True, blank=True)
@@ -61,6 +62,13 @@ class Activity(TimeStampedModel):
           return self.img_c.url
       else:
           return None 
+
+class Semester(TimeStampedModel):
+    name = models.CharField(max_length=32, verbose_name="학기")
+
+    def __str__(self):
+        return self.name 
+
 class Act_Comment(TimeStampedModel):
     # activity = models.ForeignKey(Activity, on_delete=models.CASCADE, related_name='act_comments', null=True)
     desc = models.TextField(max_length=300, null=True, blank=True)
@@ -94,3 +102,5 @@ class Challenge_Comment(TimeStampedModel):
 
     class Meta:
         db_table = 'challenge_comments'
+
+

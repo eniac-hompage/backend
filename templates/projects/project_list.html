@@ -17,7 +17,7 @@
                         <div class="project-cardlist__card">
                             {% if project.user == user %}
                             <a href="{% url 'project:delete' project.pk %}">
-                                <i class="fas fa-trash fa-2x"></i   >
+                                <i class="fas fa-trash fa-2x"></i>
                             </a>
                             {% endif %}
                             <div>

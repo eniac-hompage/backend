@@ -21,6 +21,8 @@ def all_activity(request):
     all_activities = models.Activity.objects.filter(semester="1학기")
     paginator = Paginator(all_activities, 3)
     activities = paginator.get_page(page)
+
+    sem_activities = models.Activity.objects.all()
     
     all_users = User.objects.all().order_by('-date_joined')
     paginator = Paginator(all_users, 40)
@@ -30,9 +32,7 @@ def all_activity(request):
     paginator = Paginator(next_all_activities, 6)
     next_activities = paginator.get_page(page)
 
-    all_challenges = models.Challenge.objects.all().order_by("-created")
-    paginator = Paginator(all_challenges, 6)
-    challenges = paginator.get_page(page)
+    all_challenges = models.Challenge.objects.all()
 
     all_comment = models.Activity.objects.all()
     comment_form = forms.CreateCommentForm()
@@ -42,7 +42,7 @@ def all_activity(request):
     else:
         listings = models.Activity.objects.all()
 
-    return render(request,  "activities/activity.html", context={"act": activities,"potato":users,  "next_act": next_activities, "chall": challenges, "comment": all_comment, 'comment_form': comment_form, 'listings': listings})
+    return render(request,  "activities/activity.html", context={"act": activities,"abc": sem_activities,"potato":users,  "next_act": next_activities,  "comment": all_comment, 'comment_form': comment_form, 'listings': listings})
 
 
 class CreateChallengeView(user_mixins.LoggedInOnlyView, FormView):
@@ -67,7 +67,10 @@ class CreateActivityView(user_mixins.LoggedInOnlyView, FormView):
         notice.user = self.request.user
         notice.save()
         # project.success(self.request, "Photo Uploaded")
-        return redirect(reverse("activity:activities"))
+        return redirect(reverse("activity:activities")) 
+
+
+        
 
 class CreateCommentView(user_mixins.LoggedInOnlyView, FormView):
     
@@ -111,12 +114,13 @@ def comment_create(request, pk):
             # 바로 저장하지는 않겠다
             comment.activity = article
             comment.user = request.user
+        
             comment.save()
         return redirect('activity:detail', article.pk)
     return redirect('user:login')
 
 
-
+ 
 class DetailActivity(DetailView):
     model = models.Activity
     def get_context_data(self, **kwargs):
@@ -144,9 +148,3 @@ def search(request):
    city = str.capitalize(city)
    semester = models.Activity.objects.all()
    return render(request, "activities/search.html", {"city": city, "sem": semester})
-
-
-
-                                                              
-
-                                                    

@@ -25,8 +25,7 @@ class Notice(TimeStampedModel):
     ) 
     class Meta:
         ordering = ["-created"]
-
- 
+    
     @property
     def get_photo_url(self):
       if self.thumnail_img:
@@ -40,7 +39,8 @@ class Notice(TimeStampedModel):
           return self.img_a.url
       else:
           return None
-
+ 
+    
     @property
     def get_photo_url_b(self):
       if self.img_b:
@@ -52,8 +52,8 @@ class Notice(TimeStampedModel):
     def get_photo_url_c(self):
       if self.img_c:
           return self.img_c.url
-      else:
           return None 
+
 
 
     
