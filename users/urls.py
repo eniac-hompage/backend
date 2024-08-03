@@ -16,7 +16,6 @@ path("logout/", views.log_out, name="logout"),
 path("signup", views.SignUpView.as_view(), name="signup"),
 path("<int:pk>/profile", views.UserProfileView.as_view(), name="profile"),
 
-
 path("email_verify/", views.email_verify, name="verify"),
 path("verify/<str:key>", views.complete_verification, name="complete-verification"),
 

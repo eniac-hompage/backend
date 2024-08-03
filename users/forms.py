@@ -41,7 +41,6 @@ class SignUpForm(forms.ModelForm):
             "blog_url": forms.TextInput(attrs={'placeholder': '블로그주소를 입력해주세요'}),
             "fav_pro_genre": forms.TextInput(attrs={'placeholder': '선호분야를 입력해주세요'}),
          
-          
         }
         labels = {
             "username": "이름",
@@ -50,9 +49,7 @@ class SignUpForm(forms.ModelForm):
 
 
             "student_id": "학번",
-            "phone_number": "전화번호",
-
-         
+            "phone_number": "전화번호", 
             "email": "이메일", 
             "password": "패스워드", 
             "password1":"패스워드 확인",

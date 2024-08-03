@@ -198,10 +198,10 @@ LOGIN_URL = "/users/login/"
 
 
 EMAIL_HOST = "smtp.naver.com"
-EMAIL_PORT = "587"		 # 서버 
+EMAIL_PORT = 587	 # 서버 
 EMAIL_FROM = "에니악"
-EMAIL_HOST_USER = 'donghe1472@naver.com' 	 
-EMAIL_HOST_PASSWORD = 'aa1234147236'		
+EMAIL_HOST_USER = 'donghe1472' 	 
+EMAIL_HOST_PASSWORD = 'aa878612!'		
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False 
 EMAIL_USE_TLS = 'eniac@naver.com'

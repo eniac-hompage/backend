@@ -49,7 +49,7 @@ class User(AbstractUser):
 
     def verify_email(self):
         if self.email_confirmed is False:
-            secret = uuid.uuid4().hex[:20]
+            secret = uuid.uuid4().hex[:30]
             self.email_secret = secret
             html_message = render_to_string(
                 "emails/verify_email.html", {"secret": secret}
@@ -84,4 +84,3 @@ class User(AbstractUser):
         return
 
    
-

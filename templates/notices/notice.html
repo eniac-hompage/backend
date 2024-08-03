@@ -1,92 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     {% load static %}
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/notices/notice-content.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/notices/notice-content.css' %}"
+    />
     <title>Eniac - Activity</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body id="notice-page">
+  <body id="notice-page">
     {% include 'base.html' %}
     <div class="notice">
-        <div class="notice__title">공지사항</div>
-        {% for notices in notice.object_list %}
+      <div class="notice__title">공지사항</div>
+      {% for notices in notice.object_list %}
 
-        <div class="notice__card">
-            <div class="notice__img">
-                <img src="{{notices.get_photo_url}}" />
+      <div class="notice__card">
+        <div class="notice__img">
+          <img src="{{notices.get_photo_url}}" />
+        </div>
+        <a href="{% url 'notice:detail' notices.pk %}" class="notice__text">
+          <div class="notice__card-title">
+            {{notices.title|truncatechars:20}}
+          </div>
+          <div class="notice__card-desc">{{notices.desc|truncatechars:80}}</div>
+          <div class="notice__tags">
+            {% for tag in notices.tag.all %}
+            <div class="notice__tag">
+              <div>{{tag}}</div>
             </div>
-            <a href="{% url 'notice:detail' notices.pk %}" class="notice__text">
-                <div class="notice__card-title">
-                    {{notices.title| truncatechars:20}}
-                </div>
-                <div class="notice__card-desc">
-                    {{notices.desc| truncatechars:80}}
-                </div>
-                <div class="notice__tags">
-                    {% for tag in notices.tag.all %}
-                    <div class="notice__tag">
-                        <div>{{tag}}</div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <div class="notice__card-bottom">
-                    <div>
-                        {{notices.user}}
-                    </div>
-                    <div>
-                        {{notices.updated}}
-                    </div>
-                </div>
-                {% if notices.user == user and notices.user.is_staff == True %}
-                <a href="{% url 'notice:edit' notices.pk %}" class="notice__card-button">
-                    <div class="edit-button notice-edit-btn">
-                        <button>수정</button>
-                    </div>
-                </a>
-                <a href="{% url 'notice:delete' notices.pk %}">
-                    <div class="edit-button notice-edit-btn">
-                        <button>삭제</button>
-                    </div>
-                </a>
-                {% endif %}
-            </a>
+            {% endfor %}
+          </div>
+          <div class="notice__card-bottom">
+            <div>{{notices.user}}</div>
+            <div>{{notices.updated}}</div>
+          </div>
+
+          <a
+            href="{% url 'notice:edit' notices.pk %}"
+            class="notice__card-button"
+          >
+            <div class="edit-button notice-edit-btn">
+              <button>수정</button>
+            </div>
+          </a>
+          <a href="{% url 'notice:delete' notices.pk %}">
+            <div class="edit-button notice-edit-btn">
+              <button>삭제</button>
+            </div>
+          </a>
+        </a>
+      </div>
+      {% endfor %} {% if superhost %}
+      <div class="btn-component goto-create__btn">
+        <a href="{% url 'notice:create' %}"><button>공지 작성</button></a>
+      </div>
+      {% endif %}
+      <form
+        method="get"
+        action="{% url 'notice:search' %}"
+        class="notice__search"
+      >
+        {% csrf_token %}
+        <div class="notice__search-box">
+          <input
+            name="city"
+            placeholder="공지사항을 검색하세요."
+            class="notice__search-bar"
+          />
+          <i class="fas fa-search"></i>
         </div>
-        {% endfor %} {% if superhost %}
-        <div class="btn-component goto-create__btn">
-            <a href="{% url 'notice:create' %}"><button>공지 작성</button></a>
-        </div>
+        <!-- 글 작성 버튼은 관리자만 보이도록 해주세요 -->
+      </form>
+      <div class="project-page">
+        {% if notice.has_previous %}
+        <a class="project-page__a" href="?page={{notice.previous_pre_number}}">
+          <i style="margin-right: 10px" class="fas fa-chevron-left fa-lg"></i>
+        </a>
         {% endif %}
-        <form method="get" action="{% url 'notice:search' %}" class="notice__search">
-            {% csrf_token %}
-            <div class="notice__search-box">
-                <input name="city" placeholder="공지사항을 검색하세요." class="notice__search-bar">
-                <i class="fas fa-search"></i></input>
-            </div>
-            <!-- 글 작성 버튼은 관리자만 보이도록 해주세요 -->
-        </form>
-        <div class="project-page">
-            {% if notice.has_previous %}
-            <a class="project-page__a" href="?page={{notice.previous_pre_number}}">
-                <i style="margin-right: 10px" class="fas fa-chevron-left fa-lg"></i>
-            </a>
-            {% endif %}
-            <span> {{notice.number}} of {{notice.paginator.num_pages}}</span> {% if notice.has_next %}
-            <a class="project-page__a" href="?page={{notice.next_page_number}}">
-                <i style="margin-left: 10px" class="fas fa-chevron-right fa-lg"></i>
-            </a>
-            {% endif %}
-        </div>
+        <span> {{notice.number}} of {{notice.paginator.num_pages}}</span>
+        {% if notice.has_next %}
+        <a class="project-page__a" href="?page={{notice.next_page_number}}">
+          <i style="margin-left: 10px" class="fas fa-chevron-right fa-lg"></i>
+        </a>
+        {% endif %}
+      </div>
     </div>
     {% include 'partials/footer.html' %}
     <script type="text/javascript" src="{% static 'js/act-tab.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/act-tog.js' %}"></script>
-    <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://kit.fontawesome.com/6478f529f2.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -6,3 +6,5 @@ from django.contrib.auth.admin import UserAdmin
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
     list_display = UserAdmin.list_display + ()
+
+    

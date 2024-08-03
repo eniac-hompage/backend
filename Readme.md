@@ -1,56 +1,106 @@
-# DAJLAK-BackEnd
+# Eniac Club Website
 
-REST API를 이용한 Django 웹 서버 개발
+## 소개
 
-# 규칙
+에니악 홈페이지는 중앙대학교 컴퓨터 소프트웨어공학과 동아리인 에니악 회원들을 위해 제작된 웹사이트입니다. 이 웹사이트를 통해 동아리 활동을 체계적으로 관리하고, 회원 간의 소통을 원활하게 할 수 있습니다.
 
----
+## 주요 기능
 
-- 브랜치는 제품 백로그 단위로 생성한다
-- 백로그는 pull request를 통해 생성한다.
-- commit 할때 Commit Message Rule 을 지켜준다.
+### 공지사항
 
----
+- 동아리 공지사항을 게시하고, 회원들이 이를 확인할 수 있습니다.
+- 공지사항에는 제목, 내용, 작성자, 작성일이 표시됩니다.
+- 관리자는 공지사항을 수정하거나 삭제할 수 있습니다.
 
-## Commit Message Rule
+### 프로젝트
 
-```
-- feat : 새로운 기능 추가
-- update : 버전 등 업데이트
-- fix : 수정
-- bug : 버그 수정
-- docs : 문서
-- style : 코드 스타일 혹은 포맷 등에 관한 커밋
-- refactor : 코드 리펙토링
-- test : 테스트 코드 수정
-```
+- 동아리 프로젝트를 게시하고, 회원들이 이를 확인할 수 있습니다.
+- 프로젝트에는 제목, 설명, 작성자, 작성일이 표시됩니다.
+- 각 프로젝트 카드에는 자세히 보기 버튼이 있어 프로젝트의 상세 내용을 확인할 수 있습니다.
 
-1. 첫글자는 대문자
-2. 커밋메시지 예시
-   ex) [Feat] 게시물 기능
+### 활동
 
----
+- 동아리 활동에 대한 게시글을 올리고, 회원들이 이를 확인할 수 있습니다.
+- 활동 게시글에는 제목, 내용, 작성자, 작성일이 표시됩니다.
+- 관리자는 활동 게시글을 수정하거나 삭제할 수 있습니다.
 
-## Pull Request Rule
+### 추천
 
-- 브랜치의 이름은 feature/ 기능 으로 설정한다.
+- 회원들이 추천하는 강의, 책 등을 게시하고, 회원들이 이를 확인할 수 있습니다.
+- 추천 항목에는 제목, 설명, 작성자, 작성일이 표시됩니다.
 
-  ex) feature/login
+## 스크린샷
 
-- pull request의 경우에는 스프린트 백로그를 기준으로 생성하고 제목은 커밋 제목
+### 홈페이지 메인 화면
 
-## 브랜치 전략
+![홈페이지 메인 화면](a.png)
 
-```
-- master : 라이브 서버에 제품으로 출시되는 브랜치.
-- develop : 다음 출시 버전을 대비하여 개발하는 브랜치.
-- feature : 기능 개발 브랜치. develop 브랜치에 들어간다.
-- release : 다음 버전 출시를 준비하는 브랜치. develop 브랜치를 release 브랜치로 옮긴 후 QA, 테스트를 진행하고 master 브랜치로 합친다.
-- hotfix : master 브랜치에서 발생한 버그를 수정하는 브랜치.
-```
+### 공지사항 페이지
 
+![공지사항 페이지](b.png)
 
+### 프로젝트 페이지
 
-sudo lsof -t -i tcp:8000 | xargs kill -9
+![프로젝트 페이지](c.png)
 
-<a style="text-decoration: none; color: white;" href="{% url 'user:logout' %}">Log out </a>
+### 활동 페이지
+
+![활동 페이지](d.png)
+
+### 추천 페이지
+
+![추천 페이지](e.png)
+
+## 설치 및 사용 방법
+
+1. 저장소를 클론합니다.
+
+   ```bash
+   git clone https://github.com/your-repo/eniac-homepage.git
+   cd eniac-homepage
+   ```
+
+2. 필요한 패키지를 설치합니다.
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. 데이터베이스를 초기화합니다.
+
+   ```bash
+   python manage.py migrate
+   ```
+
+4. 서버를 실행합니다.
+
+   ```bash
+   python manage.py runserver
+   ```
+
+5. 웹 브라우저에서 [http://127.0.0.1:8000](http://127.0.0.1:8000) 으로 접속하여 홈페이지를 확인합니다.
+
+## 기여 방법
+
+1. 이 저장소를 포크합니다.
+2. 새로운 브랜치를 만듭니다.
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. 변경 사항을 커밋합니다.
+   ```bash
+   git commit -m 'Add some feature'
+   ```
+4. 브랜치에 푸시합니다.
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Pull Request를 생성합니다.
+
+## 라이센스
+
+이 프로젝트는 MIT 라이센스를 따릅니다. 자세한 내용은 `LICENSE` 파일을 참고하세요.
+
+## 문의
+
+프로젝트에 대한 문의 사항이 있으시면 donghe1472@gmail.com으로 연락해 주세요.
