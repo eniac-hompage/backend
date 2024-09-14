@@ -2,10 +2,13 @@
   margin-top: 210px;
   min-height: 130vh;
 }
-
+.profile-img {
+  width: 200px;
+  height: 200px;
+}
 .profile {
-  width: 800px;
-  height: 420px;
+  width: 1000px;
+  height: 720px;
   margin: auto;
   background-color: white;
   border: 1.5px solid rgba(0, 0, 0, 0.2);

@@ -1,47 +1,48 @@
 <body id="profile-page">
-    {% include "base.html" %} {% load static %} {% block content %}
+  {% include "base.html" %} {% load static %} {% block content %}
 
-    <div class="profile">
-        <img src="../../static/img/user.png" alt="" class="profile-img" />
-        <div class="profile__content">
-            <div class="profile-left">
-                <div class="profile__info">
-                    ◽ 이름: <span>{{user_obj.username}}</span>
-                </div>
-                <div class="profile__info">
-                    ◽ 학과: <span>{{user_obj.major}}</span>
-                </div>
-                <div class="profile__info">
-                    ◽ 학번:<span>{{user_obj.student_id}}</span>
-                </div>
-                <div class="profile__info">
-                    ◽ 기수: <span>{{user_obj.entered_eniac}}</span>
-                </div>
-                <div class="profile__info">
-                    ◽ 이메일: <span>{{user_obj.email}}</span>
-                </div>
-                <div class="profile__info">
-                    ◽ 전화번호:<span>{{user_obj.phone_number}}</span>
-                </div>
-            </div>
-            <div class="profile-right">
-                <div class="profile__info">
-                    ◽ 관심분야: <span>{{user_obj.fav_pro_genre}}</span>
-                </div>
-                <div class="profile__info profile__info-long">
-                    ◽ Github 주소:<br /><span>{{user_obj.git_url}}</span>
-                </div>
-                <div class="profile__info profile__info-long">
-                    ◽ 블로그 주소:<br /><span>{{user_obj.blog_url}}</span>
-                </div>
-                <div class="profile__btn">
-                    <a href="{% url 'user:update' %}" class="profile__fix">프로필 편집</a>
-                    <a href="{% url 'user:password' %}" class="profile__fix">비밀번호 변경</a
+  <div class="profile">
+    <img src="../../static/img/user.png" alt="" class="profile-img" />
+    <div class="profile__content">
+      <div class="profile-left">
+        <div class="profile__info">
+          ◽ 이름: <span>{{user_obj.username}}</span>
+        </div>
+        <div class="profile__info">
+          ◽ 학과: <span>{{user_obj.major}}</span>
+        </div>
+        <div class="profile__info">
+          ◽ 학번:<span>{{user_obj.student_id}}</span>
+        </div>
+        <div class="profile__info">
+          ◽ 기수: <span>{{user_obj.entered_eniac}}</span>
+        </div>
+        <div class="profile__info">
+          ◽ 이메일: <span>{{user_obj.email}}</span>
+        </div>
+        <div class="profile__info">
+          ◽ 전화번호:<span>{{user_obj.phone_number}}</span>
+        </div>
+      </div>
+      <div class="profile-right">
+        <div class="profile__info">
+          ◽ 관심분야: <span>{{user_obj.fav_pro_genre}}</span>
+        </div>
+        <div class="profile__info profile__info-long">
+          ◽ Github 주소:<br /><span>{{user_obj.git_url}}</span>
+        </div>
+        <div class="profile__info profile__info-long">
+          ◽ 블로그 주소:<br /><span>{{user_obj.blog_url}}</span>
+        </div>
+        <div class="profile__btn">
+          <a href="{% url 'user:update' %}" class="profile__fix">프로필 편집</a>
+          <a href="{% url 'user:password' %}" class="profile__fix"
+            >비밀번호 변경</a
           >
           <!-- <button class="profile__password">비밀번호 변경</button> -->
         </div>
       </div>
     </div>
   </div>
-  {% endblock content %} {% include 'partials/footer.html' %}
+  {% endblock content %}
 </body>
